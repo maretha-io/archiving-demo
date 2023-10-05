@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<component name="io.maretha.archiving">
+
+  <extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
+
+
+      <listener name="lifecycleListenerArchived"
+                class="maretha.io.archiving.DocumentLifecycleListener"
+                postCommit="true"
+                async="true"
+                priority="100">
+          <event>lifecycle_transition_event</event>
+      </listener>
+  </extension>
+
+</component>
