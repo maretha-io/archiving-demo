@@ -30,10 +30,10 @@ var Hackathon = Hackathon || {};
           }
         </style>
         
-        <nuxeo-operation id="archiveOp" op="Document.MoveDocumentToArchive"></nuxeo-operation>
+        <nuxeo-operation id="archiveOp" op="Document.FollowLifecycleTransition"></nuxeo-operation>
         
         <paper-button id="archiveButton" class="primary" on-tap="archiveButton" hidden$="[[hideBtnNow]]" disabled$="[[disableGenerateBtn]]">
-          Move document to archive
+          Move this document to archive
         </paper-button>
       `;
     }
@@ -58,14 +58,18 @@ var Hackathon = Hackathon || {};
       this.set('disableGenerateBtn', true);
       
       this.$.archiveOp.input = this.document.uid;
+      this.$.archiveOp.params = {
+        "value": "to_Archived"
+      };
+      debugger;
       this.$.archiveOp
         .execute()
         .then(
-          function(response) {
+          function(responseDoc) {
             this.set('hideBtnNow', true);
             this.notify({ message: "Successfully moved the document to archive." });
             // Redirect to new path
-            this.navigateTo(`/browse${response.value}`);
+            this.navigateTo(`/browse${responseDoc.path}`);
         }.bind(this))
         .catch(
           function(e) {
@@ -80,4 +84,3 @@ var Hackathon = Hackathon || {};
   Hackathon.ArchiveDocumentButton = ArchiveDocumentButton;
 }
 </script>
-
