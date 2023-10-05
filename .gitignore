@@ -1,0 +1,8 @@
+/quota-info-addon-package/target/
+/quota-info-addon-core/target/
+/quota-info-addon-web/target/
+/target
+/.idea/.*
+.idea
+*/target/*
+/.yo-rc.json
