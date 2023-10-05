@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<component name="io.maretha.archiving.core.types">
+  
+  <require>org.nuxeo.ecm.core.LifecycleCoreExtensions</require>
+  <extension target="org.nuxeo.ecm.core.lifecycle.LifeCycleService" point="lifecycle">
+   <lifecycle name="archive-asset" defaultInitial="Active">
+      <transitions>
+        <transition name="to_Archived" destinationState="Archived">
+          <description></description>
+        </transition>
+        <transition name="to_Active" destinationState="Active">
+          <description></description>
+        </transition>
+      </transitions>
+      <states>
+        <state name="Active" description="" initial="true">
+          <transitions>
+            <transition>to_Archived</transition>
+          </transitions>
+        </state>
+        <state name="Archived" description="">
+          <transitions>
+            <transition>to_Active</transition>
+          </transitions>
+        </state>
+      </states>
+    </lifecycle>
+  </extension> 
+
+    
+    
+      <extension target="org.nuxeo.ecm.core.lifecycle.LifeCycleService" point="types">
+        <types>
+           <type name="File">archive-asset</type>
+        </types>
+       
+    </extension>
+</component>
