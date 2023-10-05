@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<component name="io.maretha.archiving.bundle">
+    <extension target="org.nuxeo.ecm.platform.WebResources" point="resources">
+        <resource name="archiving-addon-bundle.html" type="import">
+            <uri>/ui/archiving-addon-bundle.html</uri>
+        </resource>
+    </extension>
+    <extension target="org.nuxeo.ecm.platform.WebResources" point="bundles">
+        <bundle name="web-ui">
+            <resources append="true">
+                <resource>archiving-addon-bundle.html</resource>
+            </resources>
+        </bundle>
+    </extension>
+
+</component>

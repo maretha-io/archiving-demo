@@ -1,0 +1,14 @@
+{
+  "dialog.dismiss.close": "Close",
+  "dialog.dismiss.cancel": "Cancel",
+  
+  "generatePrompts.btn.notify.success": "Successfully triggered fine-tuning prompts generation.",
+  "generatePrompts.btn.notify.error": "ERROR: could not trigger fine-tuning prompts generation.",
+  "generatePrompts.btn.label": "Generate fine-tuning prompts",
+  "generateTrainingModel.btn.label": "Train OpenAI fine-tuned model",
+  "generateTrainingModel.btn.notify.missingModelError": "The OpenAI custom model is missing.",
+  "generateTrainingModel.btn.notify.reqSuccess":  "Successfully triggered OpenAI custom model training.",
+  "generateTrainingModel.btn.notify.reqError": "ERROR: could not triggered OpenAI custom model training.",
+  "navigateToRelatedDocument.btn.label": "Navigate to data source document",
+  "navigateToTrainingModel.btn.label": "Naviagte to OpenAI model document"
+}

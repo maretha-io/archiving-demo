@@ -1,0 +1,8 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Vendor: maretha.io
+Bundle-Version: 1.0.0
+Bundle-Name: archiving-core
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: archiving-core;singleton=true
+Manifest-Version: 1.0

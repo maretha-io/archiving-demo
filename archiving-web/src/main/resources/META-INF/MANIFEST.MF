@@ -1,0 +1,9 @@
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .
+Bundle-Vendor: io.maretha
+Bundle-Version: 1.0.0
+Bundle-Name: archiving-web
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: io.maretha.archiving-web;singleton=true
+Nuxeo-Component: OSGI-INF/archiving-bundle-contrib.xml
+Manifest-Version: 1.0
