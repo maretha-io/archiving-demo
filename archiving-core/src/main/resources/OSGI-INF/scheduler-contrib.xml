@@ -1,0 +1,9 @@
+<component name="org.nuxeo.workflow.progress.scheduler">
+    <extension target="org.nuxeo.ecm.core.scheduler.SchedulerService" point="schedule">
+        <schedule id="checkExpiryScheduler">
+            <eventId>checkExpiry</eventId>
+            <eventCategory>default</eventCategory>
+            <cronExpression>0 0 0 * * ?</cronExpression> <!-- Every 24 hours -->
+        </schedule>
+    </extension>
+</component>
