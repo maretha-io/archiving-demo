@@ -1,0 +1,83 @@
+<script>
+var Hackathon = Hackathon || {};
+{
+  class ArchiveDocumentButton extends Polymer.mixinBehaviors([Nuxeo.RoutingBehavior, Nuxeo.NotifyBehavior, Nuxeo.I18nBehavior], Nuxeo.Element) {
+    static get is() {
+      return 'button-archive-asset';
+    }
+
+    static get template() {
+      return Polymer.html`
+        <style include="nuxeo-button-styles">
+          paper-button {
+            border-radius: 5px;
+            --paper-button: {
+              padding: 5px 10px;
+            };
+          }
+          paper-button#archiveButton[disabled] {
+            background: linear-gradient(90deg, white, lightgreen, green);
+            background-size: 200% 100%;
+            animation: loading 5s infinite linear;
+          }
+          @keyframes loading {
+            0% {
+              background-position: 200% 0;
+            }
+            100% {
+              background-position: -200% 0;
+            }
+          }
+        </style>
+        
+        <nuxeo-operation id="archiveOp" op="Document.MoveDocumentToArchive"></nuxeo-operation>
+        
+        <paper-button id="archiveButton" class="primary" on-tap="archiveButton" hidden$="[[hideBtnNow]]" disabled$="[[disableGenerateBtn]]">
+          Move document to archive
+        </paper-button>
+      `;
+    }
+
+    static get properties() {
+      return {
+        document: {
+          type: Object,
+        },
+        hideBtnNow: {
+          type: Boolean,
+          value: false,
+        },
+        disableGenerateBtn: {
+          type: Boolean,
+          value: false,
+        }
+      }
+    }
+
+    archiveButton() {
+      this.set('disableGenerateBtn', true);
+      
+      this.$.archiveOp.input = this.document.uid;
+      this.$.archiveOp
+        .execute()
+        .then(
+          function(response) {
+            this.set('hideBtnNow', true);
+            this.notify({ message: "Successfully moved the document to archive." });
+            // Redirect to new path
+            this.navigateTo(`/browse${response.value}`);
+        }.bind(this))
+        .catch(
+          function(e) {
+            console.error(e);
+            this.notify({ message: "Could not move document to archive!" });
+            this.set('disableGenerateBtn', false);
+        }.bind(this));
+    } 
+  }
+
+  customElements.define(ArchiveDocumentButton.is, ArchiveDocumentButton);
+  Hackathon.ArchiveDocumentButton = ArchiveDocumentButton;
+}
+</script>
+
