@@ -37,7 +37,7 @@ public class ExpireListener implements EventListener {
         // build command
         BulkCommand command = new BulkCommand.Builder(SetPropertiesAction.ACTION_NAME,
                 "SELECT * FROM Document WHERE " +
-                        "AND dc:expire <= DATE '" + currentDate + "' " +
+                        "AND dc:expired <= DATE '" + currentDate + "' " +
                         "AND ecm:isProxy = 0 AND ecm:isTrashed = 0").repository("default")
                 .user("Administrator")
                 .param("dc:expire", ZonedDateTime.now(ZoneOffset.UTC).plusDays(3).toString())
@@ -51,7 +51,7 @@ public class ExpireListener implements EventListener {
     private DocumentModelList expiryCheck(CoreSession session) {
         String currentDate = ZonedDateTime.now(ZoneOffset.UTC).toString();
         return session.query("SELECT * FROM Document WHERE " +
-                "AND dc:expire <= DATE '" + currentDate + "' " +
+                "AND dc:expired <= DATE '" + currentDate + "' " +
                 "AND ecm:isProxy = 0 AND ecm:isTrashed = 0");
     }
 
