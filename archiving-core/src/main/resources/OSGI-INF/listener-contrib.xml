@@ -1,8 +1,11 @@
-<extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
-    <listener name="ExpireListener" async="false"
-              postCommit="false"
-              class="hackathon.listeners.ExpireListener"
-              priority="101">
-        <event>checkExpiry</event>
-    </listener>
-</extension>
+<component name="listeners.contrib">
+
+    <extension target="org.nuxeo.ecm.core.event.EventServiceComponent" point="listener">
+        <listener name="ExpireListener" async="false"
+                  postCommit="false"
+                  class="hackathon.listeners.ExpireListener"
+                  priority="101">
+            <event>checkExpiry</event>
+        </listener>
+    </extension>
+</component>
