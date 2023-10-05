@@ -6,3 +6,5 @@ Bundle-Name: archiving-core
 Bundle-ManifestVersion: 2
 Bundle-SymbolicName: archiving-core;singleton=true
 Manifest-Version: 1.0
+Nuxeo-Component:  OSGI-INF/scheduler-contrib.xml,
+  OSGI-INF/listener-contrib.xml,
